@@ -142,11 +142,67 @@ module.exports = {
         })
     },
 
-    getLocation: (req, res) => {
-        let query = req.params.query || 'jakarta'
+    getDailyMenu: (req, res) => {
+        let restoid = req.params.restoid || 'jakarta'
         axios({
             method: 'GET',
-            url: `https://developers.zomato.com/api/v2.1/locations?query=${query}`,
+            url: `https://developers.zomato.com/api/v2.1/dailymenu?res_id=${restoid}`,
+            headers: {
+                'user-key': process.env.ZOMATO_TOKEN
+            }
+        })
+        .then( response => {
+            let result = response.data
+            res.status(200).json({found: result})
+        })
+        .catch( err => {
+            res.send(500).json({err:"Internal server error"})
+        })
+    },
+
+    getRestotan: (req, res) => {
+        let restoid = req.params.restoid || 'jakarta'
+        axios({
+            method: 'GET',
+            url: `https://developers.zomato.com/api/v2.1/restaurant?res_id=${restoid}`,
+            headers: {
+                'user-key': process.env.ZOMATO_TOKEN
+            }
+        })
+        .then( response => {
+            let result = response.data
+            res.status(200).json({found: result})
+        })
+        .catch( err => {
+            res.send(500).json({err:"Internal server error"})
+        })
+    },
+
+    getRestotanReviews: (req, res) => {
+        let restoid = req.params.restoid || 'jakarta'
+        axios({
+            method: 'GET',
+            url: `https://developers.zomato.com/api/v2.1/reviews?res_id=${restoid}`,
+            headers: {
+                'user-key': process.env.ZOMATO_TOKEN
+            }
+        })
+        .then( response => {
+            let result = response.data
+            res.status(200).json({found: result})
+        })
+        .catch( err => {
+            res.send(500).json({err:"Internal server error"})
+        })
+    },
+
+    getSearch: (req, res) => {
+        let category = req.params.category || 'arabian'
+        let cuisines = req.params.cuisines || 'aceh'
+        let q = req.params.q || 'jakarta'
+        axios({
+            method: 'GET',
+            url: `https://developers.zomato.com/api/v2.1/search?entity_type=city&q=${q}&cuisines=${cuisines}&category=${category}&sort=rating&order=desc`,
             headers: {
                 'user-key': process.env.ZOMATO_TOKEN
             }
@@ -159,7 +215,5 @@ module.exports = {
             res.send(500).json({err:"Internal server error"})
         })
     }
-    
-
 }
 
