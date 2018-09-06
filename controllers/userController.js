@@ -27,7 +27,7 @@ module.exports = {
             name: user.name,
             email: user.email
           },
-          process.env.JWT_SECRET_KEY
+          process.env.JWT
         );
 
         let data = {
@@ -123,7 +123,7 @@ module.exports = {
                   name: user.name,
                   email: user.email
                 },
-                process.env.JWT_SECRET_KEY
+                process.env.JWT
               );
 
               let data = {
@@ -151,7 +151,7 @@ module.exports = {
                   name: userDB.name,
                   email: userDB.email
                 },
-                process.env.JWT_SECRET_KEY
+                process.env.JWT
               );
 
               let data = {
