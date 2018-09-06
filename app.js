@@ -17,6 +17,8 @@ db.once('open', function() {
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var weatherRouter = require('./routes/weather');
+var foodRouter = require('./routes/food')
+
 
 var app = express();
 
@@ -29,6 +31,8 @@ app.use(cookieParser());
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/weather', weatherRouter);
+app.use('/foods', foodRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
