@@ -197,12 +197,10 @@ module.exports = {
     },
 
     getSearch: (req, res) => {
-        let category = req.params.category || 'arabian'
-        let cuisines = req.params.cuisines || 'aceh'
         let q = req.params.q || 'jakarta'
         axios({
             method: 'GET',
-            url: `https://developers.zomato.com/api/v2.1/search?entity_type=city&q=${q}&cuisines=${cuisines}&category=${category}&sort=rating&order=desc`,
+            url: `https://developers.zomato.com/api/v2.1/search?q=${q}&sort=rating&order=desc`,
             headers: {
                 'user-key': process.env.ZOMATO_TOKEN
             }

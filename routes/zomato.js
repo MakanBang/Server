@@ -18,7 +18,7 @@ router.get('/location/:query', getLocation)
 router.get('/restoran/menu/:restoid', getDailyMenu)
 router.get('/restoran/:restoid', getRestotan)
 router.get('/review/:restoid', getRestotanReviews)
-router.get('/search/:category/:cuisines/:q', getSearch)
+router.get('/search/:q', getSearch)
 
 
 module.exports = router;
